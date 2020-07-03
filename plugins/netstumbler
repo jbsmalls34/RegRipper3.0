@@ -53,7 +53,7 @@ sub pluginmain {
 	my $root_key = $reg->get_root_key;
 	::rptMsg("netstumbler v.".$VERSION);
 	
-	my @apps = ("netstumbler","netstumbler");
+	my @apps = ("netstumbler");
 	foreach my $app (@apps) {
 # First, determine app version
 		my $version;
@@ -62,11 +62,7 @@ sub pluginmain {
 		if (my $key = $root_key->get_subkey($path)) {
 			my @subkeys = $key->get_list_of_subkeys();
 			if (scalar @subkeys > 0) {
-				foreach my $s (@subkeys) {
-					my $name = $s->get_name();
-					if (defined($root_key->get_subkey($path."\\".$name."\\AVGeneral\\cRecentFiles"))) {
-						$version = $name;
-					}
+				
 				}
 			}
 		}
@@ -81,7 +77,7 @@ sub pluginmain {
 			my %arkeys;
 			my @subkeys = $key->get_list_of_subkeys();
 			if (scalar @subkeys > 0) {
-				foreach my $s (@subkeys) {
+				foreach my $s (@subkeys)  {
 					my $num = $s->get_name();
 					my $data = $s->get_value('sDI')->get_data();
 					$num =~ s/^c//;
@@ -108,19 +104,7 @@ sub pluginmain {
 				}
 #				::rptMsg("Most recent PDF opened: ".gmtime($arkeys{1}{lastwrite})." (UTC)");
 				::rptMsg("Key name,file name,sDate,uFileSize,uPageCount");
-				foreach my $k (sort {$a <=> $b} keys %arkeys) {
-					::rptMsg("c".$k.",".$arkeys{$k}{data}.",".$arkeys{$k}{sDate}.",".$arkeys{$k}{uFileSize}.",".$arkeys{$k}{uPageCount});
-				}
-			}
-			else {
-				::rptMsg($key_path." has no subkeys.");
-			}
-		}
-		else {
-			::rptMsg("Could not access ".$key_path);
-		}
-		::rptMsg("");
-	}
+				
 }
 
 1;

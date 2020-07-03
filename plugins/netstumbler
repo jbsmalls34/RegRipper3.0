@@ -1,23 +1,7 @@
 #-----------------------------------------------------------
-# adobe.pl
+# netstumbler.pl
 # Plugin for Registry Ripper 
-# Parse Adobe Reader MRU keys
-#
-# Change history
-#   20200622 - Updated code to check for app version
-#   20200620 - renamed "adoberdr.pl" to "adobe.pl", to capture Acrobat data, as well
-#   20200520 - minor updates
-#   20150717 - updated IAW Jason Hale's blog post (see ref), added
-#              .csv output format
-#   20120716 - added version 10.0 to @versions
-#   20100218 - added checks for versions 4.0, 5.0, 9.0
-#   20091125 - modified output to make a bit more clear
-#
-# References
-#   http://dfstream.blogspot.com/2015/07/adobe-readers-not-so-crecentfiles.html
-#
-# Note: LastWrite times on c subkeys will all be the same,
-#       as each subkey is modified as when a new entry is added
+# Parse Netstumbler MRU keys
 #
 # copyright 2020 Quantum Analytics Research, LLC
 # Author: H. Carvey, keydet89@yahoo.com
